@@ -6,22 +6,22 @@ const User = mongoose.model('User', {
     image: {
         type: String
     },
-    Phone:{
-        type:Number
+    Phone: {
+        type: Number
     },
-    Email:{
-        type:Text
+    Email: {
+        type: String,
+        unique: true,
+        index: true
     },
-    Password:{
-        type:Text
+    Password: {
+        type: String
     },
-    Address:{
-        type:{
-            street:String,
-            city:String,
-            lang:String,
-            lat:String
-        }
+    Address: {
+        street: String,
+        city: String,
+        lang: String,
+        lat: String
     }
 })
 
