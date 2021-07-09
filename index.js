@@ -14,7 +14,7 @@ app.use(cors())
 app.use(morgan('tiny'))
 
 app.use('/assets/images', express.static('./public/images'))
-app.use('/frontend', express.static('frontend'))
+// app.use('/frontend', express.static('frontend'))
 //routes
 app.use('/api/user',user_Router)
 app.use('/api/product',product_Router)
