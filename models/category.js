@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
-const Category = mongoose.model('Category', {
+const autoIncrement = require('mongoose-sequence')(mongoose);
+
+const categoryScheme= mongoose.Schema({
     title: {
         type: String,
         unique: true,
@@ -9,5 +11,7 @@ const Category = mongoose.model('Category', {
         type: String
     }
 })
+categoryScheme.plugin(autoIncrement.plugin,'productNO');
+const Category = mongoose.model('Category',categoryScheme)
 
 module.exports = Category

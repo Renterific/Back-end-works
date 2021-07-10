@@ -1,5 +1,8 @@
-const mongoose = require('mongoose')
-const Product = mongoose.model('Product', {
+const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-sequence')(mongoose);
+const Joi = require('joi');
+
+const productSchema=mongoose.Schema({
     title: {
         type: String
     },
@@ -31,5 +34,9 @@ const Product = mongoose.model('Product', {
         ref: 'User'
     }
 })
+
+productSchema.plugin(autoIncrement.plugin,'productNO');
+
+const Product = mongoose.model('Product',productSchema);
 
 module.exports = Product

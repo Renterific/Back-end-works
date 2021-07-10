@@ -1,5 +1,7 @@
-const mongoose = require('mongoose')
-const RentingOperation = mongoose.model('RentingOperation', {
+const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-sequence')(mongoose);
+
+const rentSchema=mongoose.Schema({
     total_payment: {
         type: Number
     },
@@ -26,5 +28,7 @@ const RentingOperation = mongoose.model('RentingOperation', {
         ref: 'Product'
     }
 })
+rentSchema.plugin(autoIncrement,'opr_NO');
+const RentingOperation = mongoose.model('RentingOperation',rentSchema )
 
-module.exports = RentingOperation
+module.exports = RentingOperation;
